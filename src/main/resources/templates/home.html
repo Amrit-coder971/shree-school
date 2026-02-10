@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance_IN_HOME</title>
+
+    <style>
+		*{
+		    margin: 0;
+		    padding: 0;
+		    box-sizing: border-box;
+		    font-family: Arial, sans-serif;
+		}
+
+		.navbar{
+		    display: flex;
+		    justify-content: space-between;
+		    align-items: center;
+		    padding: 20px 50px;
+		    background: white;
+		    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+		}
+
+		.logo{
+		    font-size: 26px;
+		    font-weight: 700;
+		    color: #0056ff;
+		}
+
+		.nav-links{
+		    list-style: none;
+		    display: flex;
+		    gap: 25px;
+		}
+
+		.nav-links a{
+		    text-decoration: none;
+		    color: #333;
+		    font-weight: 600;
+		}
+
+		.login-btn{
+		    background: #0056ff;
+		    color: white !important;
+		    padding: 8px 15px;
+		    border-radius: 5px;
+		}
+		
+
+		.hero{
+		    height: 70vh;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		}
+
+		.hero-text{
+		    text-align: center;
+		    color: white;
+		    background: rgba(0,0,0,0.3);
+		    padding: 20px 40px;
+		    border-radius: 10px;
+		}
+
+		.hero-text h1{
+		    font-size: 45px;
+		    font-weight: 800;
+		}
+
+		.hero-text h2{
+		    font-size: 30px;
+		    margin-top: 10px;
+		}
+
+		.content{
+		    padding: 50px;
+		    text-align: center;
+		}
+
+
+
+	</style>
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo"></div>
+        <ul class="nav-links">
+            <li><a >Home</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/register" class="login-btn">Register</a></li>
+			<li><a href="/login" class="login-btn">Login</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-text">
+        <h1>Stundent Attendance Management System </h1>
+    </div>
+</section>
+
+<section class="content">
+    <h2> 
+		Stundent Attendance Management System 
+    </h2>
+    <p>
+		A simple and efficient system that helps record and manage student attendance accurately. <br>
+		It reduces manual work, avoids errors, and makes tracking attendance easier for teachers and schools.
+    </p>
+</section>
+
+
+</body>
+</html>

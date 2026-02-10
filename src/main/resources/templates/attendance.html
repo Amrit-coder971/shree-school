@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Attendance Management System</title>
+<style>
+	body {
+	           font-family: Arial, sans-serif;
+	           margin: 0;
+	           padding: 0;
+	           background-color: #f8f9fa;
+	       }
+
+	       /* Navbar */
+	       .navbar {
+	           display: flex;
+	           justify-content: space-between;
+	           align-items: center;
+	           background-color: #343a40;
+	           color: #fff;
+	           padding: 15px 30px;
+	       }
+
+	       .navbar h2 {
+	           margin: 0;
+	           font-size: 24px;
+	       }
+
+	       /* Add Student button */
+	       .add-btn a.add {
+	           background-color: #007bff;
+	           color: #fff;
+	           padding: 8px 15px;
+	           text-decoration: none;
+	           border-radius: 5px;
+	           font-weight: bold;
+	           transition: background-color 0.3s ease;
+	       }
+
+	       .add-btn a.add:hover {
+	           background-color: #0056b3;
+	       }
+
+	       .container {
+	           padding: 20px 30px;
+	       }
+
+	       table {
+	           width: 100%;
+	           border-collapse: collapse;
+	           background-color: #fff;
+	       }
+
+	       table th, table td {
+	           padding: 10px; 
+	           text-align: left;
+	           border-bottom: 1px solid #dee2e6;
+	           font-size: 14px; 
+	       }
+
+	       table thead {
+	           background-color: #343a40;
+	           color: #fff;
+	       }
+
+	       table tbody tr:hover {
+	           background-color: #f1f1f1;
+	       }
+
+	      
+	       .text-success {
+	           color: green;
+	           font-weight: bold;
+	       }
+
+	       .text-danger {
+	           color: red;
+	           font-weight: bold;
+	       }
+
+	      
+	       td a.info,
+	       td a.success,
+	       td a.warning {
+	           padding: 5px 10px;
+	           text-decoration: none;
+	           border-radius: 4px;
+	           margin-right: 5px;
+	           color: #fff;
+	           font-size: 13px;
+	       }
+
+	       td a.info { background-color: #17a2b8; }
+	       td a.success { background-color: #28a745; }
+	       td a.warning { background-color: #ffc107; color: #212529; }
+
+	       td a.info:hover { background-color: #117a8b; }
+	       td a.success:hover { background-color: #1e7e34; }
+	       td a.warning:hover { background-color: #e0a800; }
+</style>
+     
+</head>
+
+<body>
+
+<nav class="navbar">
+	<div class="text-center">
+	       <h2>Student Attendance List</h2>
+	   </div>
+	   <div class="add-btn">
+	       <div class="text-right">
+	           <a th:href="@{/add_student}" class="add">Add Student</a>
+	       </div>
+</nav>
+
+<div class="container">
+    
+
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Student Name</th>
+                <th>Email</th>
+				<th>Address</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr th:each="attendance : ${attendanceList}">
+                <td th:text="${attendance.id}"></td>
+                <td th:text="${attendance.student.firstName + ' ' + attendance.student.lastName}"></td>
+                <td th:text="${attendance.student.email}"></td>
+				<td th:text="${attendance.student.address}"></td>
+                <td>
+                    <span th:text="${attendance.status}"
+                          th:classappend="${attendance.status == 'PRESENT'} 
+                          ? 'text-success' : 'text-danger'">
+                    </span>
+                </td>
+
+                <td>
+                    <a th:href="@{/attendance/view/{id}(id=${attendance.id})}"
+                       class="info">View</a>
+
+                    <a th:href="@{/attendance/present/{id}(id=${attendance.id})}"
+                       class="success">Present</a>
+
+                    <a th:href="@{/attendance/absent/{id}(id=${attendance.id})}"
+                       class="warning">Absent</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View Attendance</title>
+    <style>
+        body { font-family: Arial; margin: 0; padding: 0; background: #f8f9fa; }
+        .navbar { background: #343a40; color: #fff; padding: 15px 30px; }
+        .navbar h2 { margin: 0; }
+        .container { padding: 20px 30px; }
+        table { width: 100%; border-collapse: collapse; background: #fff; }
+        th, td { padding: 10px; border-bottom: 1px solid #dee2e6; text-align: left; }
+        thead { background: #343a40; color: #fff; }
+        tbody tr:hover { background: #f1f1f1; }
+        .text-success { color: green; font-weight: bold; }
+        .text-danger { color: red; font-weight: bold; }
+        .back-btn { display: inline-block; margin-top: 15px; padding: 8px 15px; 
+                    background: #007bff; color: #fff; text-decoration: none; border-radius: 5px; }
+        .back-btn:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <h2>View Attendance</h2>
+</nav>
+
+<div class="container">
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Student Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Status</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="attendance : ${attendanceList}">
+                <td th:text="${attendance.id}"></td>
+                <td th:text="${attendance.student.firstName + ' ' + attendance.student.lastName}"></td>
+                <td th:text="${attendance.student.email}"></td>
+                <td th:text="${attendance.student.address}"></td>
+                <td>
+                    <span th:text="${attendance.status}" 
+                          th:classappend="${attendance.status == 'PRESENT'} ? 'text-success' : 'text-danger'">
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/dashboard}" class="back-btn">← Back</a>
+
+</div>
+
+</body>
+</html>
+

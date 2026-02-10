@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Profile</title>
+</head>
+<body>
+	<div>
+		<img th:if="${user.profilePicture == null}" th:src="@{/images/profile.webp}" height="128px">
+		<img th:if="${user.profilePicture != null}" th:src="@{/uploads/{filename}(filename=${user.profilePicture})}" height="128px">
+	</div>
+	<div>	<h1 th:text="${user.firstName} + ' ' + ${user.lastName}"></h1></div>
+	<div>
+		Email: <span th:text="${user.email}"></span></div>
+	<div>
+		Username: <span th:text="${user.username}"></span></div>
+	<div>
+		Gender: <span th:text="${user.gender}"></span>
+	</div>
+	
+	<div>
+		<a th:href="@{/profile/edit}">Edit</a>
+	</div>
+
+</body>
+
+</html>
